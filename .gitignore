@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Xcode user-specific files
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+
+# Xcode build outputs
+DerivedData/
+build/
+*.dSYM
+*.dSYM.zip
+*.ipa
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Code signing and provisioning
+*.mobileprovision
+*.provisionprofile
+*.cer
+*.p12
