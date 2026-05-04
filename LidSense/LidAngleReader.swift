@@ -8,8 +8,19 @@ import Foundation
 import IOKit.hid
 
 final class LidAngleReader: ObservableObject {
+    static let shared = LidAngleReader()
+
     @Published var angle: Int?
     @Published var status = "Looking for lid angle sensor..."
+
+    var kaomoji: String {
+        guard let angle else { return "＝＿＝" }
+        switch angle {
+        case ...60:  return "(๑>ㅁ<ฅ)"
+        case ..<120: return "＝O_O＝"
+        default:     return "＝￣ω￣＝"
+        }
+    }
 
     private enum HID {
         static let vendorID = 0x05AC

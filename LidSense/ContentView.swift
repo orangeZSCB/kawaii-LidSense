@@ -6,7 +6,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var reader = LidAngleReader()
+    @ObservedObject private var reader = LidAngleReader.shared
 
     var body: some View {
         VStack(spacing: 18) {
@@ -15,12 +15,12 @@ struct ContentView: View {
                 .fontWeight(.semibold)
 
             if let angle = reader.angle {
+                Text(reader.kaomoji)
+                    .font(.system(size: 48, weight: .regular, design: .rounded))
+
                 Text("\(angle)°")
-                    .font(.system(size: 72, weight: .bold, design: .rounded))
-                    .monospacedDigit()
-                    .contentTransition(.numericText())
-                    .accessibilityLabel("Current lid angle")
-                    .accessibilityValue("\(angle) degrees")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
             } else {
                 VStack(spacing: 8) {
                     Image(systemName: "laptopcomputer.trianglebadge.exclamationmark")
